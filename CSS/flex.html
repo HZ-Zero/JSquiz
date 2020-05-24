@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    #d1{
+        width: 200px;
+        height: 200px;
+        background-color: #4ea0da;
+    }
+    #d2{
+        width: 100px;
+        height: 100px;
+        background-color: bisque;
+    }
+    #d3{
+        width: 50px;
+        height: 50px;
+        background-color: #3386c0;
+    }
+    li{
+        height: 30px;
+        border: 2px solid #000;
+    }
+    ul{
+        height: 500px;
+    }
+    #u1{display:-webkit-flex;display:flex;margin:0;padding:0;list-style:none;}
+    #u1 li:nth-child(1){-webkit-flex-grow:2;flex-grow:2;}
+    #u1 li:nth-child(2){-webkit-flex-grow:1;flex-grow:1;}
+    #u1 li:nth-child(3){-webkit-flex-grow:3;flex-grow:3;}
+
+</style>
+<body>
+<div id="d1">
+    <ul id="u1">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+</div>
+<<script>
+    var d1=document.getElementById('d1');
+    var d2=document.getElementById('d2');
+    var d3=document.getElementById('d3');
+    d1.addEventListener('click',function () {
+        console.log('d1捕获');
+    },true);
+    d2.addEventListener('click',function () {
+        console.log('d2捕获');
+    },true);
+    d3.addEventListener('click',function () {
+        console.log('d3捕获');
+    },true);
+
+    d1.addEventListener('click',function () {
+        console.log('d1冒泡');
+    },false);
+    d2.addEventListener('click',function () {
+        console.log('d2冒泡');
+    },false);
+    d3.addEventListener('click',function () {
+        console.log('d3冒泡');
+    },false);
+</script>
+</body>
+</html>

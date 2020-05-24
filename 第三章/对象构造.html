@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="exp1"></div>
+<script type="text/javascript">
+var p = new Object();
+p.name='a';
+p.age=13;
+p.setname=function (name) {
+    this.name='b'
+}
+console.log(p);
+p.setname('b');
+console.log(p);
+var per={
+    name:'a',
+    age:13,
+    setname:function (name) {
+        this.name=name
+    }
+}
+
+per.setname('c');
+console.log(per)
+
+
+function creatper(name,age){
+    var obj={
+        name:name,
+        age:age,
+        setname:function (name) {
+            this.name=name
+        }
+    }
+    return obj;
+}
+var per2=creatper('d',14);
+console.log(per2);
+
+
+
+function person(name,age) {
+    this.name=name;
+    this.age=age;
+    this.setname=function (name) {
+        this.name=name;
+    }
+}
+var per3=new person('f',14);
+per3.setname('h');
+console.log(per3);
+
+
+function person2(name,age) {
+    this.name=name;
+    this.age=age;
+}
+person2.prototype.setname=function (name) {
+    this.name=name;
+}
+p1=new person2('aa',11);
+p2=new person2('bb',13
+);
+console.log(p1,p2);
+
+
+</script>
+</body>
+</html>

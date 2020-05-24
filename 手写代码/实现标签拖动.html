@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    #exp1{
+        width: 100px;
+        height: 100px;
+        background-color: #4ea0da;
+        position: fixed;
+    }
+</style>
+<body>
+<div id="exp1">
+
+</div>
+<script>
+
+    let div_com = document.getElementById('exp1')
+    div_com.addEventListener('mousedown',f1)
+    function f1(e) {
+        let startX=e.clientX;
+        let startY=e.clientY
+        let leftD = div_com.offsetLeft
+        let topD = div_com.offsetTop
+        div_com.addEventListener('mousemove',f2)
+        div_com.addEventListener('mouseup',f3)
+        function f2(e) {
+            let endX=e.clientX
+            let endY=e.clientY
+
+            div_com.style.left = leftD + endX - startX + 'px'
+            div_com.style.top = topD + endY - startY + 'px'
+        }
+        function f3(e) {
+            div_com.removeEventListener('mousemove',f2)
+            div_com.removeEventListener('mouseup',f3)
+
+        }
+    }
+
+
+
+
+
+</script>
+</body>
+</html>

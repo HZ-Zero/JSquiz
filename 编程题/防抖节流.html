@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    #exp1{
+        width: 100px;
+        height: 100px;
+        background-color: #4ea0da;
+    }
+</style>
+<body>
+<div id="exp1">
+
+</div>
+
+
+<script>
+    // function jieliu(fb,delay) {
+    //     let lasttime=0;
+    //     return function () {
+    //         let nowtime=Date.now();
+    //         if (nowtime-lasttime>delay){
+    //             fb();
+    //             lasttime=nowtime;
+    //             console.log(lasttime)
+    //         }
+    //     }
+    // }
+
+    function jieliu(fn,delay) {
+        let lasttime=null;
+        return function () {
+            let nowtime=Date.now();
+            if(nowtime - lasttime>delay){
+                fn();
+                lasttime=nowtime;
+            }
+        }
+    }
+
+
+    // function fangdou(fn,delay) {
+    //     let lasttime=null;
+    //     return function () {
+    //         clearTimeout(lasttime)
+    //         lasttime=setTimeout(()=>fn(),delay);
+    //     }
+    //
+    // }
+
+    function fangdou(fn,delay) {
+        let time=null;
+        return function () {
+            clearTimeout(time);
+            time=setTimeout(()=>fn(),delay);
+        }
+    }
+    const div1=document.getElementById("exp1");
+    div1.addEventListener("click", jieliu(()=>console.log("节流"),1000))
+    div1.addEventListener("click", fangdou(()=>console.log("防抖"),1000))
+</script>
+</body>
+</html>

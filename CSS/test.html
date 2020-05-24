@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script type="text/javascript">
+function animal(name,age) {
+    this.name=name;
+    this.age=age;
+}
+function a(){
+    console.log(this)
+}
+a()
+// setInterval(()=>a(),1000);
+animal.prototype.eat=function () {
+    console.log(this.name,'eating');
+}
+function dog(name,age) {
+    animal.call(this,name,age);
+}
+function cat(name,age) {
+    animal.call(this,name,age);
+}
+var dog1=new dog(1,2);
+var cat1=new cat(1,2);
+console.log(dog1);
+console.log(cat1)
+
+</script>
+<style>
+    #d1{
+        width: 200px;
+        height: 200px;
+        background-color: #4ea0da;
+    }
+    #d2{
+        width: 100px;
+        height: 100px;
+        background-color: bisque;
+    }
+    #d3{
+        width: 50px;
+        height: 50px;
+        background-color: #3386c0;
+    }
+</style>
+<script>
+    function person(name,age,sale){
+        this.name=name;
+        this.age=age;
+        this.sale=sale;
+    }
+    let s=new person(1,2,3);
+    console.log(s)
+    let {name,age,sale}=s;
+    console.log(name,age,sale)
+
+    let aa=new Array(3,4)
+    console.log(aa)
+
+    window.onload=function () {
+        new Promise((resolve,reject)=>
+        {
+            console.log('ajax')
+            var xhr=new XMLHttpRequest();
+            xhr.open('get','http://musicapi.leanapp.cn/search?keywords=%E6%B5%B7%E9%98%94%E5%A4%A9%E7%A9%BA',true)
+            xhr.send()
+            console.log(xhr.responseText);
+            // xhr.onload =function () {
+            //     if(this.status==200)
+            //     {
+            //         console.log('ajax')
+            //         console.log(xhr.responseText)
+            //         resolve()
+            //     }
+            //     else
+            //         reject()
+            // }
+        }
+
+    )
+    }
+
+</script>
+<body>
+<div id="d1">
+    <div id="d2">
+        <div id="d3"></div>
+    </div>
+</div>
+<<script>
+    console.log(1^9)
+    var d1=document.getElementById('d1');
+    var d2=document.getElementById('d2');
+    var d3=document.getElementById('d3');
+    d1.addEventListener('click',function () {
+        console.log('d1捕获');
+    },true);
+    d2.addEventListener('click',function () {
+        console.log('d2捕获');
+    },true);
+    d3.addEventListener('click',function () {
+        console.log('d3捕获');
+    },true);
+
+    d1.addEventListener('click',function () {
+        console.log('d1冒泡');
+    },false);
+    d2.addEventListener('click',function () {
+        console.log('d2冒泡');
+    },false);
+    d3.addEventListener('click',function () {
+        console.log('d3冒泡');
+    },false);
+</script>
+</body>
+</html>

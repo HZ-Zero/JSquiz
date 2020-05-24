@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    #exp1{
+        width: 100px;
+        height: 100px;
+        background-color: #3386c0;
+    }
+</style>
+<body>
+<div id="exp1">
+
+</div>
+
+<script>
+    // var input=document.getElementById("exp1");
+    // input.onclick=function () {
+    //     let number=input.value;
+    //     var worker = new Worker('woker.js');
+    // }
+    function f1() {
+        let i=0;
+        function f2() {
+            console.log(i++)
+        }
+        return f2;
+    }
+    let a=f1()
+    a()
+    a()
+</script>
+</body>
+</html>

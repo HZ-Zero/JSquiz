@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="exp1"></div>
+<ul id="myul">
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <li>6</li>
+    <li>7</li>
+    <li>8</li>
+</ul>
+<div id="btns">
+
+</div>
+<script>
+    function solution() {
+        let btns = document.getElementById("btns")
+        for (let i =0;i<10;i++) {
+            let bn = document.createElement("BUTTON")
+            bn.innerHTML='按钮'+String(i)
+            btns.append(bn)
+            bn.onclick=function () {
+                console.log(i)
+            }
+        }
+    }
+    solution()
+    let ul=document.getElementById('myul')
+    ul.onclick=function (e) {
+        console.log(e.target.nodeName)
+        console.log(e.target.innerHTML)
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    #exp1{
+        height: 100px;
+        width: 100px;
+        background-color: #4ea0da;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+
+    }
+    ul li{
+        /*display: inline-block;*/
+        float: left;
+    }
+    ul{
+        overflow: hidden;
+    }
+</style>
+<body>
+<div id="exp1" >
+
+</div>
+<ul>
+    <li>
+1
+    </li>
+    <li>
+2
+    </li>
+    <li>
+3
+    </li>
+</ul>
+<script>
+    o1={}
+    oo={
+        show:function (){
+            setTimeout(fn.bind(o1)())
+        }
+    }
+
+
+    fn=()=>console.log(this)
+    oo.show()
+</script>
+</body>
+</html>

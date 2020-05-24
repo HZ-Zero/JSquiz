@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="exp1"></div>
+
+
+<script>
+    // let a={}
+    // let b=new Object();
+
+    function PER(name,age) {
+        this.name=name;
+        this.age=age;
+    }
+
+    let p=new PER("lkin",12);
+    console.log(p);
+    let p2=Object.create(p);
+    console.log(p2);
+
+    function mynew (fn,...args){
+        var o = {};
+        var _constructor = fn
+        o.__proto__ = _constructor.prototype;
+        _constructor.call(o, ...args);
+        return o;
+    }
+    function mycreat (proto){
+        function f(){}
+        f.prototype=proto
+        f.prototype.constructor=f
+        return new f();
+
+        return res;
+    }
+    let p4=mynew(PER,"lin",14);
+    let p41=new PER("lin2",15)
+    console.log(p4,p41);
+
+    let p5=mycreat(p41);
+    let p6=Object.create(p41)
+    console.log(p5,p6)
+
+    console.log(p5.name)
+    // let p5=mycreat(p4);
+    // console.log(p4,p5);
+    // function f() {
+    //     let res=[].shift.call(arguments);
+    // }
+    // mynew(1,[1,2,3,4,5]);
+    // mynew(1,1,2,3,4,5);
+
+    // function Mynew(fn,...args) {
+    //     let obj={};
+    //     obj.__proto__=fn.prototype;
+    //     obj=fn.call(obj,...args);
+    //     return obj;
+    // }
+    //
+    //
+    // function mycreate(obj) {
+    //     function f() {
+    //     }
+    //     f.prototype=obj
+    //     f.prototype.constructor=f;
+    //     return new f();
+    // }
+
+</script>
+</body>
+</html>

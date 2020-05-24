@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    #head,#foot{
+        width: 100%;
+        background-color: bisque;
+    }
+    #contanier{
+        /*padding: 100px 100px 100px 100px;*/
+    }
+    #contanier:after{
+        clear: both;
+    }
+    #left,#center,#right{
+        float: left;
+    }
+    #left{
+        width: 100px;
+        background-color: chocolate;
+        margin-left: calc(100px - 100%);
+    }
+    #center{
+        width: calc(100% - 200px);
+        background-color: #3386c0;
+        /*position: relative;*/
+        margin-left: 100px;
+
+    }
+    #right{
+        width: 100px;
+        background-color: aqua;
+    }
+</style>
+<body>
+<div id="exp1"></div>
+<header id="head">toubu</header>
+<div id="contanier">
+    <div id="center">center</div>
+    <div id="left">left</div>
+    <div id="right">right</div>
+</div>
+<footer id="foot">尾部</footer>
+</body>
+</html>

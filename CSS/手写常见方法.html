@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    #container{
+        display: flex;
+        justify-content: space-around;
+    }
+    .sub{
+        width: 100px;
+        height: 100px;
+        background-color: #4ea0da;
+    }
+</style>
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script>
+
+    let arr=[[1,2,3,4],[1,3,4,5],[3,3,4]];
+    let arr2=[];
+    arr.map((item)=>{
+        console.log(item)
+    })
+    console.log(Array.isArray(arr))
+    function flaten(arr){
+        if (Array.isArray(arr)){
+            arr.map((item,index)=>{
+                flaten(item)
+            })
+        }
+        else
+            arr2.push(arr);
+    }
+    flaten(arr);
+    console.log(arr2)
+
+
+
+
+    //深拷贝
+    function isObj(obj) {
+        return Object.prototype.toString.call(obj).slice(8,-1);
+    }
+    function deepClone(obj) {
+        let result,res2=isObj(obj);
+        if (res2=='Array') {
+            result=[]
+        }else if(res2=='Object'){
+            result={}
+        }
+        else
+            return obj;
+        for (let key in obj){
+            let value=obj[key];
+            if(isObj(value)==='Object' || isObj(value)==='Array'){
+                result[key]=deepClone(value);
+            }
+            else
+                result[key]=obj[key];
+        }
+        return result;
+    }
+    let oo={
+        name:1,
+        age:12,
+        oo:{
+            aaa:1
+        }
+    }
+    let o2=deepClone(oo);
+    let o3=oo;
+    o3.name=999
+    o3.oo.aaa=2;
+    // console.log(o2,oo,o3);
+</script>
+<body>
+<!--<div id="exp1" style="width: 100px;height: 100px;background-color: #3386c0"></div>-->
+<!--<form action="">-->
+<!--    <input type="text"></p>-->
+<!--    <input type="password">-->
+<!--    <button type="submit">tijiao</button>-->
+<!--</form>-->
+<!--<div id="img"></div>-->
+<!--<ul id="uul">-->
+<!--    <li>1</li>-->
+<!--</ul>-->
+<div id="container">
+    <div class="sub">
+
+    </div>
+    <div class="sub">
+
+    </div>
+    <div class="sub">
+
+    </div>
+</div>
+</body>
+<style>
+    #img{
+        width: 300px;
+        height: 300px;
+        background-image: url("CSS/3.png");
+        background-repeat: no-repeat;
+        background-size: 100%;
+    }
+</style>
+<script>
+    let str="abnc";
+    console.log(str.slice())
+    function getData(data) {
+        console.log('ddd')
+        console.log(data);
+    };
+    exp1.onclick=function () {
+
+    };
+    var startTime = new Date().getTime();
+    setTimeout(()=>{
+        for (let i=0;i<10;i++){
+            console.log(i);
+        }
+    }, 1000);
+</script>
+</html>

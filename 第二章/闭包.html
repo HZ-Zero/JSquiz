@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="exp1">12123</div>
+<ol style="position: fixed">
+    <li>1</li>
+    <li id="li1" style="height: 30px;">2</li>
+    <li>3</li>
+</ol>
+<iframe src="https://www.baidu.com/s?wd=js%E5%87%BD%E6%95%B0%E5%90%8D.%E5%87%BD%E6%95%B0&rsv_spt=1&rsv_iqid=0xb4e498d9000037ff&issp=1&f=8&rsv_bp=1&rsv_idx=2&ie=utf-8&rqlang=cn&tn=baiduhome_pg&rsv_enter=0&rsv_dl=tb&rsv_t=b9a5o4NRKcevKybzt6qTVTuDTWT0bZ%2FPyA%2BwPLhMQ3cV%2BaEyxrWhxzWa2zWplMNi8xUV&oq=Jquery%2520%2524.Ajax%25E5%258E%259F%25E7%2590%2586&rsv_pq=8bdda73d0001f5f0&inputT=4187&rsv_sug3=57&rsv_sug1=41&rsv_sug7=100&rsv_sug2=0&rsv_sug4=4187"></iframe>
+<script>
+    console.log( document.getElementById('exp1').innerText)
+    console.log( document.getElementById('exp1').innerHTML)
+    // document.getElementById('exp1').innerText='<p>1111</p>'
+    document.getElementById('exp1').innerHTML='<p>1111</p>'
+    var he=document.getElementById('li1').offsetHeight;
+    console.log(document.getElementById('li1').style['height'])
+</script>
+<script>
+    function getData(Data) {
+        console.log(Data);
+    }
+    function Ajax() {
+        const pro=new Promise((resolve,reject)=>{
+            let xhr=new XMLHttpRequest();
+            xhr.open('GET','http://127.0.0.1:5000/d',false);
+            xhr.send();
+            if (xhr.readyState==4 && xhr.status==200){
+                resolve(xhr.responseText)
+            }else {
+                reject('err');
+            }
+                });
+        return pro;
+    }
+    // Ajax().then((data)=>console.log(data)),(data)=>console.log(data);;
+    console.log('code41')
+</script>
+</body>
+<style>
+    li{
+        display: inline-block;
+    }
+</style>
+<script>
+    function isobj(obj) {
+        return Object.prototype.toString.call(obj);
+    }
+    function deepclone(obj) {
+        if (isobj(obj)!='Array') {
+            let res=[];
+        }
+        else if (isobj(obj)=='Object'){
+            let res={};
+        }
+        else return obj;
+        for (let key in obj){
+            let value=obj[key];
+            res[key]=deepclone(value);
+        }
+        return res;
+    }
+</script>
+<script>
+    const ProAjax= function (url) {
+        const pro=new Promise((resolve,reject)=>{
+            const readState=function () {
+                console.log('改变状态了')
+                if(this.readyState!=4){
+                    return ;
+                }
+                else if(this.readyState==4)
+                    resolve(this.response);
+                else
+                    reject(this.status);
+            }
+            let xhr=new XMLHttpRequest();
+            xhr.open('get',url);
+                xhr.onreadystatechange=readState;
+                xhr.send()
+        });
+        return pro;
+    }
+    ProAjax('http://127.0.0.1:5000/d').then((data)=>{console.log(data)}),(data)=>{
+        console.log(data)
+
+    };
+
+
+</script>
+<script>
+    // const getJSON = function(url) {
+    //     const promise = new Promise(function(resolve, reject){
+    //         const handler = function() {
+    //             console.log(this)
+    //             if (this.readyState !== 4) {
+    //                 return;
+    //             }
+    //             if (this.status === 200) {
+    //                 resolve(this.response);
+    //             } else {
+    //                 reject(new Error(this.statusText));
+    //             }
+    //         };
+    //         const client = new XMLHttpRequest();
+    //         client.open("GET", url);
+    //         client.onreadystatechange = handler;
+    //         client.send();
+    //     });
+    //     return promise;
+    // };
+    // getJSON("http://127.0.0.1:5000/d").then(function(json) {
+    //     console.log('Contents: ' + json);
+    // }, function(error) {
+    //     console.error('出错了', error);
+    // });
+    // console.log('code75')
+</script>
+</html>

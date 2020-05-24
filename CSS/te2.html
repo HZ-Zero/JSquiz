@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script>
+    // sessionStorage.setItem('name','2');
+    // console.log(sessionStorage.getItem('name'));
+    // sessionStorage.removeItem('name')
+    // sessionStorage.clear();
+</script>
+<style>
+    #exp1{
+        width: 100px;
+        height: 100px;
+        background-color: #3386c0;
+    }
+    #exp2{
+        width: 50px;
+        height: 50px;
+        position: relative;
+        top: 3300px;
+        background-color: #4ea0da;
+    }
+</style>
+<body>
+<div id="exp1">
+
+    <div id="exp2">
+
+    </div>
+
+</div>
+</body>
+<script>
+    setTimeout(()=>{
+       console.log('1')
+    },0);
+    new Promise(()=>{
+        console.log('2')
+    });
+    console.log('3')
+
+
+
+class Mypromise{
+    constructor(handle) {
+        this._status = 'p';
+        this._val = undefined;
+        try {
+            handle(this._resolve.bind(this), this._reject.bind(this))
+        } catch (e) {
+            this._reject(err)
+        }
+    }
+        _resolve(val){
+            if (this._status!=='p')
+            return ;
+                this._status='resolve';
+                this._val=val;
+        }
+        _reject(err){
+            if (this._status!=='p')
+                return;
+                this._status='resolve';
+                this._val=val;
+        }
+}
+let cc=new Promise((resolve,reject)=>{
+    setTimeout(()=>{resolve();},1000);
+
+})
+cc.then(()=>{
+    console.log('CHENGG')
+},()=>{
+    console.log('ERR')
+})
+
+
+// let c=new Mypromise((re,rj)=>{
+//
+//     re('回调');
+// })
+</script>
+</html>

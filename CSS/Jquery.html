@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script>
+    function $(selector) {
+        return new Jquery(selector);
+    }
+    function Jquery(selector) {
+        this.elements=[];
+        if(selector.charAt(0)=='#'){
+            this.elements.push(document.getElementById(selector.substr(1)))
+        }
+        if(selector.charAt(0)=='.'){
+            this.elements=document.getElementsByClassName(selector.substr(1));
+        }
+        if(typeof  selector =='function '){
+            document.addEventListener('DomContentload',function () {
+            })
+        }
+    }
+    Jquery.prototype.css=function (attr,val) {
+        if(typeof  attr =='string' && typeof val=='string'){
+            for (var i =0;i<this.elements.length;i++){
+                this.elements[i].style[attr]=val;
+            }
+        }
+    }
+</script>
+<body>
+<div id="exp1"></div>
+
+</body>
+</html>

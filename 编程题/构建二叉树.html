@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="exp1"></div>
+
+
+<script>
+
+    class node{
+        constructor(value,p,left,right){
+            this.value=value;
+            this.p=p;
+            this.left=left;
+            this.right=right;
+        }
+    }
+    let a=[1,2,3,4,5,6];
+    function bulidtree(root,len) {
+        if (len*2+1<=a.length-1){
+            let temp=new node(a[len*2+1],root,null,null);
+            root.left=temp;
+            bulidtree(temp,len*2+1);
+        }
+        if (len*2+2<=a.length-1){
+            let temp=new node(a[len*2+2],root,null,null);
+            root.right=temp;
+            bulidtree(temp,len*2+2);
+        }
+    }
+    let root=new node(a[0],null,null,null);
+    bulidtree(root,0);
+    console.log(root);
+</script>
+</body>
+</html>

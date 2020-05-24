@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    #contanier{
+        display: grid;
+        grid-template-columns: 100px auto 100px;
+    }
+    #center{
+        height: 100px;
+        background-color: bisque;
+    }
+    #right,#left{
+        height: 100px;
+        background-color: #4ea0da;
+    }
+</style>
+<body>
+<div id="contanier">
+    <div id="left">left</div>
+    <div id="center">center</div>
+    <div id="right">right</div>
+</div>
+<script src="https://cdn.bootcss.com/axios/0.19.2/axios.js"></script>
+<script>
+    document.getElementById("left").addEventListener("click",()=>{
+        axios.get("http://127.0.0.1:5000/d").then(res=>{
+            console.log(res)
+            console.log(res.data)
+        })
+    })
+    //
+    // let a = "asdqwe";
+    // let b =a.join();
+    // console.log(b)
+</script>
+</body>
+
+</html>

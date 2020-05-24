@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<style>
+    #exp1{
+        width: 100px;
+        height: 100px;
+        background-color: #3386c0;
+        animation: chan 2s ease 2s;
+    }
+    @keyframes chan {
+        0%{
+            width: 100px;
+        }
+        100%{
+            width: 300px;
+        }
+    }
+    #exp2{
+        width: 50px;
+        height: 50px;
+        position: relative;
+        top: 3300px;
+        background-color: #4ea0da;
+    }
+</style>
+<body>
+<div id="exp1">
+
+    <div id="exp2">
+
+    </div>
+
+</div>
+
+</body>
+<script>
+    var exp=document.getElementById('exp1');
+    exp.addEventListener('mouseover',()=>alert('1'),true);
+</script>
+</html>

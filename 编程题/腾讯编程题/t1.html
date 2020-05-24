@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="container">
+    <div class="content" id="jsContent">
+        <h1>Head1</h1>
+        <div>Content</div>
+        <h2>Head1.1</h2>
+        <div>Content</div>
+        <h2>Head1.2</h2>
+        <div>Content</div>
+        <h2>Head1.3</h2>
+        <div>Content</div>
+        <h3>Head1.3.1</h3>
+        <div>Content</div>
+        <h3>Head1.3.2</h3>
+        <div>Content</div>
+        <h4>Head1.3.2.1</h4>
+        <div>Content</div>
+        <h5>Head1.3.2.1.1</h5>
+        <div>Content</div>
+        <h6>Head1.3.2.1.1.1</h6>
+        <div>Content</div>
+        <h3>Head1.3.3</h3>
+        <div>Content</div>
+        <h2>Head1.4</h2>
+        <div>Content</div>
+        <h1>Head2</h1>
+        <div>Content</div>
+        <div>111</div>
+        <div>111</div>
+        <div>111</div>
+        <h2>Head2.1</h2>
+        <div>Content</div>
+        <div>111</div>
+    </div>
+    <div class="menu" id="jsMenu">
+        <ul>
+            <li><a href="#" class="h1">Head1</a></li>
+            <li><a href="#" class="h2">Head1.1</a></li>
+            <li><a href="#" class="h2">Head1.2</a></li>
+            <li><a href="#" class="h2">Head1.3</a></li>
+            <li><a href="#" class="h3">Head1.3.1</a></li>
+            <li><a href="#" class="h3">Head1.3.2</a></li>
+            <li><a href="#" class="h4">Head1.3.2.1</a></li>
+            <li><a href="#" class="h5">Head1.3.2.1.1</a></li>
+            <li><a href="#" class="h6">Head1.3.2.1.1.1</a></li>
+            <li><a href="#" class="h3">Head1.3.3</a></li>
+            <li><a href="#" class="h2">Head1.4</a></li>
+            <li><a href="#" class="h1">Head2</a></li>
+            <li><a href="#" class="h2">Head2.1</a></li>
+        </ul>
+    </div>
+</div>
+<script>
+    function Node(className,value) {
+        this.className=className
+        this.value=value
+    }
+    function menu() {
+        let nodeArr=[]
+        let ddiv=document.getElementById("jsContent")
+        let child=ddiv.firstElementChild
+        while(child.nextElementSibling){
+            if(child.nodeName[0]=='H'){
+                let node=new Node(child.nodeName,child.innerHTML)
+                nodeArr.push(node)
+                child=child.nextElementSibling.nextElementSibling
+            }else {
+                child.setAttribute("class","no-header")
+                console.log(child.innerHTML)
+                child=child.nextElementSibling
+            }
+        }
+        let jsMenu=document.getElementById('jsMenu')
+        let ul=document.createElement('ul')
+        ul.id='ulID'
+        jsMenu.appendChild(ul)
+        ul=document.getElementById("ulID")
+        for(let node of nodeArr){
+            // console.log(node)
+            let li=document.createElement('li')
+            let a=document.createElement('a')
+            a.href='#'
+            a.className=node.className.toLowerCase()
+            a.innerHTML=node.value
+            ul.appendChild(li)
+            li.appendChild(a)
+        }
+        // console.log(nodeArr)
+        // return nodeArr
+    }
+    menu()
+    // console.log(nodeA)
+</script>
+</body>
+</html>

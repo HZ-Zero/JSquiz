@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="exp1"></div>
+<script>
+    let da=new Date()
+    var reObj1 = new RegExp("^[a-zA-Z][a-zA-Z0-9]{5,11}$");
+    var reObj2 = /^[a-zA-Z][a-zA-Z0-9]{5,11}$/
+    console.log(da)
+    console.log(reObj1,reObj1)
+    console.log(Object.prototype.toString.call(da))
+    console.log(Object.prototype.toString.call(reObj1))
+    console.log(Object.prototype.toString.call(reObj2))
+    function isobj(obj) {
+        return Object.prototype.toString.call(obj).slice(8,-1);
+    }
+
+    // if(hash.has(obj)) return hash.get(obj)
+    // let cloneObj = Array.isArray(obj) ? [] : {}
+    // hash.set(obj, cloneObj)
+
+    function deepcopy(obj) {
+        let res;
+        if (isobj(obj)=='Object') {
+            res={}
+        }
+        else if(isobj(obj)=='Array'){
+            res=[]
+        }
+        else if(isobj(obj)=='Date'){
+            res=new Date(obj.getTime())
+            return res;
+        }
+        else if(isobj(obj)=='RegExp'){
+            res = new RegExp(obj)
+            return res;
+        }
+        else
+            return obj;
+        for (let key in obj){
+            res[key]=deepcopy(obj[key]);
+        }
+        return res;
+    }
+
+let o1={name:1,age:"12",reg:/^[a-zA-Z][a-zA-Z0-9]{5,11}$/,Da:new Date(),ff: function () {
+        console.log(1)
+    }};
+    let o2 =deepcopy(o1);
+    o2.Da=new Date()
+    o2.reg=/^[a-zA-Z]{11}$/
+    o2.name=2
+    o2.age=99
+    console.log(o1,o2)
+    console.log(Object.prototype.toString.call(o2.reg))
+    o1.ff=function (){
+        console.log("新方法")
+    }
+    o2.ff();
+
+    o1.ff();
+</script>
+</body>
+</html>

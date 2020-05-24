@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="exp1"></div>
+<script>
+    // 1 子类直接用call构造 缺陷：访问不到父类方法
+    // 2 原型链继承 多个子类修改属性时会一起改变，因此他们的隐式原型指向同一个
+    // 3 寄生继承 通过call构造后修改子类prototype指向父类实例  没有任何缺陷了但是执行了两次构造函数
+    // 即同一个属性可以在自身访问和在原型上访问到 浪费了内存
+    // 4 子类还是通过call构造 子类的prorotype指向父类的prototype 缺陷:子类prototype的构造函数为父类的构造函数
+    // 5 改善第四种 将构造函数指向自身即可 子类的prototype执行父类的Object,creat 子类.prototype.构造指向自身
+    function parent() {
+        this.a=arguments[0];
+        this.name="parent"
+    }
+    parent.prototype.showname=function (name) {
+        console.log(name)
+    }
+    function child1() {// 第一种 call继承 无法调用函数
+        parent.call(this)
+        this.name="child1"
+    }
+    function child2() {
+        this.name="child2"
+    }
+    child2.prototype=new parent()//第二种 原型指向父类实例， 无需绑定call也可构造了 原型链继承 多个重复对象修改属性会同时修改
+
+    function child3() {// 第三种 组合继承 通过call构造了自身（第一遍构造） 通过原型链指向父类实例（第二遍构造） 又有构造了隐式原型 浪费了内存 没有任何缺陷了
+        parent.call(this)
+        this.name="child3"
+    }
+    child3.prototype=new parent()// 第三种 子类的指向与父类相同， 属性在子类实例中，隐式原型中又重复了
+
+    function child4() {
+        this.name="child4"
+        parent.call(this)
+    }
+    child4.prototype=parent.prototype// 第四种 子类原型指向父类原型 缺陷子类的构造函数与父类相同
+
+    function child5() {
+        parent.call(this)
+        this.name="child5"
+    }
+    child5.prototype=Object.create(parent.prototype)
+    child5.prototype.constructor=child5// 优化第四种 构造函数指向自身
+
+    console.log(new child1())
+    console.log(new child2())
+    console.log(new child3())
+    console.log(new child4())
+    console.log(new child5())
+
+</script>
+</body>
+</html>

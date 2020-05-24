@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="exp1"></div>
+
+
+<script>
+    // call
+    // Function.prototype.mycall =function(context,...args) {
+    //         context.fn=this;
+    //         let res=context.fn(...args);
+    //         delete context.fn;
+    //         return res;
+    // }
+
+    // Function.prototype.mycall=function(context,...args){
+    //     context.fn=this;
+    //     let res=context.fn(...args);
+    //     delete context.fn;
+    //     return res;
+    // }
+
+
+    let xiaowang={name:"LIN",age:20};
+
+    function salary(money,time) {
+        this.money=money;
+        this.time=time;
+        console.log("MONEY",time);
+    }
+    salary.mycall(xiaowang,10000,2);
+    console.log(xiaowang)
+
+    //apply
+    Function.prototype.myapply =function(context,args) {
+        context.fn=this;
+        let res=context.fn(...args);
+        delete context.fn;
+        return res;
+    };
+    Function.prototype.myapply=function(context,args){
+        context.fn=this;
+        let res=context.fn(...args);
+        delete context[fn];
+        return res;
+    }
+    let xiaolin={name:"WANG",age:21};
+    salary.myapply(xiaolin,[2000,3]);
+    console.log(xiaolin)
+    // bind
+    Function.prototype.mybind=function (context,...args) {
+        let _this=this;
+        return function (...args) {
+            let res=_this.call(context,...args);
+            console.log(...args)
+            return res;
+        }
+    };
+
+
+    Function.prototype.myBind = function (thisArg, ...args) {
+        if (typeof this !== "function") {
+            throw TypeError("Bind must be called on a function")
+        }
+        var self = this
+        // new优先级
+        var fbound = function () {
+            self.apply(this instanceof self ? this : thisArg, args.concat(Array.prototype.slice.call(arguments)))
+        }
+        // 继承原型上的属性和方法
+        fbound.prototype = Object.create(self.prototype);
+
+        return fbound;
+    }
+
+
+
+    // Function.prototype.mybind=function(context,...args){
+    //
+    //     context.fn=this;
+    //     let _this=this;
+    //     return function () {
+    //         let res=_this.call(context,...args);
+    //         return res;
+    //     }
+    // }
+    let xiaoli={name:"li",age:22}
+    salary.mybind(xiaoli);
+    console.log(xiaoli)
+    salary.mybind(xiaoli)(30000,39);
+    console.log(xiaoli)
+</script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<style>
+    #container div{
+        width: 100px;
+        height: 100px;
+        margin: 20px;
+    }
+    #container{
+        display: flex;
+        padding: 0 120px;
+    }
+    #d1{
+        background-color: red;
+        flex: 1;
+    }
+    #d2{
+        background-color: #3386c0;
+        flex: 1;
+    }
+    #d3{
+        background-color: #132456;
+        flex: 1;
+    }
+</style>
+<div id="exp1" style="width: 100px;height: 100px;background-color: aqua;position: fixed"></div>
+<div id="container">
+    <div id="d1">
+
+    </div>
+    <div id="d2">
+
+    </div>
+    <div id="d3">
+
+    </div>
+</div>
+
+<style>
+    html{
+        /*filter: grayscale(100%);*/
+    }
+</style>
+<script>
+    var div=document.getElementById("exp1");
+    div.addEventListener("mousedown", f1);
+    function f1(e) {
+        startX=e.clientX;
+        starty=e.clientY;
+        l = div.offsetLeft;
+        t = div.offsetTop;
+        div.addEventListener("mousemove", f2);
+        div.addEventListener("mouseup", f3);
+    }
+    function f2(e) {
+        var endX=e.clientX;
+        var endy=e.clientY;
+        div.style.left= l + endX - startX + 'px';
+        div.style.top= t + endy - starty + 'px';
+        console.log(div.style.left)
+        console.log(div.style.right)
+    }
+    function f3(e){
+        div.removeEventListener("mousemove",f2 )
+        div.removeEventListener("mouseup",f3 )
+    }
+</script>
+</body>
+</html>

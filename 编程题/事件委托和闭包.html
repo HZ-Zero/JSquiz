@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="exp1" style="width: 100px;height: 100px;background-color: red">
+    <button>1</button>
+</div>
+
+
+<!--<table>-->
+<!--    <tr>-->
+<!--        <td>row 1, cell 1</td>-->
+<!--        <td>row 1, cell 2</td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--        <td>row 2, cell 1</td>-->
+<!--        <td>row 2, cell 2</td>-->
+<!--    </tr>-->
+<!--</table>-->
+<div>
+    <ul>主菜单
+        <li><ul>子菜单
+            <li>111</li>
+            <li>222</li>
+            <li>333</li>
+        </ul></li>
+        <li>子菜单2</li>
+        <li>子菜单3</li>
+    </ul>
+</div>
+<script>
+    var k=document.querySelectorAll('ul');
+    console.log(k)
+    var div = document.getElementById("exp1");
+    // for (let i =0;i<10;i++){    // 事件循环绑定 let可以使用函数得到区别
+    //     // 原因 作用域链。用var的话优先在全局中找到 打印的是最终的结果
+    //     // 用let的话会沿着链找到块级作用域
+    //     let btn=document.createElement("button");
+    //     btn.innerHTML="按钮"+i
+    //     btn.onclick=function(){
+    //         console.log(i)
+    //     };
+    //     div.appendChild(btn);var
+    // }
+
+    // for ( var i =0;i<10;i++){    // 闭包实现 let和var都可以
+    //     (function (i) {
+    //         let btn=document.createElement("button");
+    //         btn.innerHTML="按钮"+i
+    //         btn.onclick=function(){
+    //             console.log(i)
+    //         };
+    //         div.appendChild(btn);
+    //     })(i)
+    // }
+
+    for ( var i =0;i<10;i++){    // 通过增加下标区分
+        let btn=document.createElement("button");
+        btn.innerHTML="按钮"+i
+        btn.index=i
+        div.appendChild(btn);
+        let btns=document.getElementsByTagName("BUTTON")
+        btns[i].onclick=function(){
+            console.log(this.index)
+        };
+    }
+    // for (var i =0;i<10;i++) {// 事件循环绑定 var不可以原因是，触发了该事件时，var作为全局变量值 不会实时改变  主要原因
+    //     // 立即执行 和 监听事件
+    //     let btn=document.createElement("button")
+    //     btn.innerHTML="按钮"+i
+    //     btn.onclick=function(){
+    //         console.log(i)
+    //     };
+    //     div.appendChild(btn);
+    // }
+    // 事件委托
+    div.onclick=function (event) {
+        console.log("点击了子元素")
+        console.log(event.target.nodeName)
+        if (event.target.nodeName == 'BUTTON') {
+            alert(event.target.innerHTML);
+        }
+    }
+    //
+
+</script>
+</body>
+</html>
