@@ -21,3 +21,17 @@
 // }
 //
 // alert(num.toFixed(2));
+var obj = {
+
+  fn: function () {
+    console.log(this,'27') // fn
+    return () => {
+      console.log(this,'29'); // 箭头函数不改变this fn
+        (function () { console.log(this,'30') })(); //this->node里 global html里window
+      setTimeout(function () { console.log(this,'31') }, 1);  //this-> timeout
+      setTimeout( () =>{ console.log(this,'32') }, 1);// 箭头函数 fn
+    }
+  }
+}
+
+obj.fn()();

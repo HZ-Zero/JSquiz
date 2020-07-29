@@ -13,6 +13,7 @@
     // 即同一个属性可以在自身访问和在原型上访问到 浪费了内存
     // 4 子类还是通过call构造 子类的prorotype指向父类的prototype 缺陷:子类prototype的构造函数为父类的构造函数
     // 5 改善第四种 将构造函数指向自身即可 子类的prototype执行父类的Object,creat 子类.prototype.构造指向自身
+    // 6 修改类名的prototype 可以直接调用类的静态方法
     function parent() {
         this.a=arguments[0];
         this.name="parent"

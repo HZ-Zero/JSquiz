@@ -1,35 +1,38 @@
 
-function  Node(val,next) {
-    this.val=val
-    this.next=next
-}
-function solution(arr) {
-    if (arr.length!=0) {
-        let root=new Node(null,null)
-        let node=new Node(arr[0],null)
-        root.next=node
-        for (let i=1;i<arr.length;i++){
-            node.next=new Node(arr[i],null)
-            node=node.next
-        }
-        return root;
-
-    }
-    else {
-        return null;
-    }
-}
-
-let arr=[1,2,3,4,5,6]
-let res=solution(arr)
-for(let i=0;i<10;i++){
-    console.log(res.val)
-    res=res.next
-}
-while(res.next!=null){
-    console.log(res.val)
-    res=res.next
-}
+// let i ='a' in ['a','2'];
+// console.log(i)
+//
+// function  Node(val,next) {
+//     this.val=val
+//     this.next=next
+// }
+// function solution(arr) {
+//     if (arr.length!=0) {
+//         let root=new Node(null,null)
+//         let node=new Node(arr[0],null)
+//         root.next=node
+//         for (let i=1;i<arr.length;i++){
+//             node.next=new Node(arr[i],null)
+//             node=node.next
+//         }
+//         return root;
+//
+//     }
+//     else {
+//         return null;
+//     }
+// }
+//
+// let arr=[1,2,3,4,5,6]
+// let res=solution(arr)
+// for(let i=0;i<10;i++){
+//     console.log(res.val)
+//     res=res.next
+// }
+// while(res.next!=null){
+//     console.log(res.val)
+//     res=res.next
+// }
 
 
 
@@ -155,4 +158,14 @@ while(res.next!=null){
 // a[index]=num;
 // print(a.join(" "))
 
+
+// function Person() {
+//     this.name = 'NAME'
+//     this.Date = new Date()
+// }
+//
+// const per = new Person()
+// console.log(per)
+
+let a = 0
 

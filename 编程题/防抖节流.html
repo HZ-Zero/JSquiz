@@ -18,21 +18,10 @@
 
 
 <script>
-    // function jieliu(fb,delay) {
-    //     let lasttime=0;
-    //     return function () {
-    //         let nowtime=Date.now();
-    //         if (nowtime-lasttime>delay){
-    //             fb();
-    //             lasttime=nowtime;
-    //             console.log(lasttime)
-    //         }
-    //     }
-    // }
-
+    (function () { console.log(this,'30') })();
     function jieliu(fn,delay) {
         let lasttime=null;
-        return function () {
+        return  () => {
             let nowtime=Date.now();
             if(nowtime - lasttime>delay){
                 fn();
@@ -42,18 +31,9 @@
     }
 
 
-    // function fangdou(fn,delay) {
-    //     let lasttime=null;
-    //     return function () {
-    //         clearTimeout(lasttime)
-    //         lasttime=setTimeout(()=>fn(),delay);
-    //     }
-    //
-    // }
-
     function fangdou(fn,delay) {
         let time=null;
-        return function () {
+        return  ()=> {
             clearTimeout(time);
             time=setTimeout(()=>fn(),delay);
         }

@@ -1,17 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+  <meta charset="UTF-8">
+  <title>Title</title>
 </head>
+<style>
+  #exp1 {
+    /* width: 100px;
+    height: 100px; */
+    /* border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 10px red; */
+    /* background-color: aqua; */
+
+
+    width: 0;
+    height: 0;
+    border-left: 50px;
+    border-right: 50px solid transparent;
+    border-bottom: 100px solid red;
+  }
+</style>
+
 <body>
-<div id="exp1">
+  <div id="exp1">
 
-</div>
-<script>
+  </div>
+  <script>
+    // (function () { console.log(this) })();
+    // var obj = {
 
-    
-    
-</script>
+    //   fn: function () {
+    //     console.log(this)
+    //     return () => {
+    //       console.log(this)
+    //       // (function () { console.log(this) })(); //this->
+    //       setTimeout(function () { console.log(this) }, 1);  //this->
+    //     }
+    //   }
+    // }
+
+    // obj.fn()();
+
+    var a = 1;
+    (function (b) {
+      console.log(b)
+    })(a);
+
+    alert(++a)
+
+  </script>
 </body>
+
 </html>
