@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+
+<body>
+  <div id="exp1">
+
+  </div>
+
+  <button id="btn1">
+    click
+  </button>
+  <button id="btn2">
+    click
+  </button>
+  <script>
+    function solution1(fn, delay) {
+      let lasttime = null
+      return function () {
+        let nowtime = Date.now()
+        if (nowtime - lasttime > delay) {
+          lasttime = nowtime
+          fn()
+        }
+      }
+    }
+
+    function solution2(fn, delay) {
+      let time = null
+      return function () {
+        clearTimeout(time)
+        time = setTimeout(() => fn(), delay)
+      }
+
+    }
+
+    let btn1 = document.getElementById("btn1")
+    let btn2 = document.getElementById("btn2")
+
+    btn1.addEventListener('click', solution1(() => console.log("节流"), 1000))
+    btn2.addEventListener('click', solution2(() => console.log("防抖"), 1000))
+
+  </script>
+</body>
+
+</html>

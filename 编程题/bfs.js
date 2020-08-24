@@ -1,0 +1,4 @@
+
+function BFS(index,current) {
+
+}

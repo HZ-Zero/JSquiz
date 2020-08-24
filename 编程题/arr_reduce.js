@@ -39,3 +39,17 @@ let initialValue = {
     fail: []
 }
 
+// 原生实现map
+Array.prototype.newMap = function(fn) {
+    var newArr = [];
+    for(var i = 0; i<this.length; i++){
+        newArr.push(fn(this[i],i,this))
+    }
+    return newArr;
+}
+// 原生实现foreach
+Array.prototype._forEach = function(fn){
+    for(var i=0; i<this.length; i++){
+        fn(this[i], i, this);
+    }
+}
